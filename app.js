@@ -82,7 +82,8 @@ const internPrompt = [
     },
 ];
 
-const addEngineerTeam = [
+// Add Engineer Team Prompt input
+const addTeamPrompt = [
     {
         type: 'list',
         name: 'addMembers',
@@ -100,6 +101,24 @@ const addEngineerTeam = [
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
+
+// Team array to hold the team list
+const teamArry = [];
+
+// Main function which call manager prompt input and create a new manager with its data.
+// Then push all that data to the team array.
+const main = () => {
+
+    inquirer.prompt(managerPrompt).then((data) =>{
+        
+        const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber)
+        
+        teamArry.push(manager);
+
+        // Ask the manager if he/she want to add members to the team.
+        addTeam();
+    });
+};
 
 
 // After you have your html, you're now ready to create an HTML file using the HTML
