@@ -35,7 +35,30 @@ const managerPrompt = [
     {
         type: 'input',
         name: 'officeNumber',
-        message: "What is your office number?",
+        message: 'What is your office number?',
+    },
+];
+
+const engineerPrompt = [
+    {
+        type: 'input',
+        name: 'engineerName',
+        message: "Please enter the engineer's name:",
+    },
+    {
+        type: 'input',
+        name: 'engineerId',
+        message: "Please enter the engineer's id number:",
+    },
+    {
+        type: 'input',
+        name: 'engineerEmail',
+        message: "Please enter the engineer's email:",
+    },
+    {
+        type: 'input',
+        name: 'engineerGitHub',
+        message: "Please enter the engineer's GitHub username:",
     },
 ];
 
