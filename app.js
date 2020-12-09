@@ -107,9 +107,9 @@ const teamArry = [];
 
 // Main function which call manager prompt input and create a new manager with its data.
 // Then push all that data to the team array.
-const main = () => {
+function main() {
 
-    inquirer.prompt(managerPrompt).then((data) =>{
+    inquirer.prompt(managerPrompt).then((data) => {
         
         const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber)
         
@@ -120,6 +120,25 @@ const main = () => {
     });
 };
 
+function addTeam() {
+
+    inquirer.prompt(addTeamPrompt).then((data) => {
+        
+        switch(data.addMembers) {
+            case 'Engineer':
+                // Call the function to get engineer info goes here
+                break;
+            case 'Intern':
+                // Call the function to get intern info goes here
+                break;
+            case 'Done':
+                // Call the function to render the team members goes here
+                break;
+            default:
+                return "No team members added";
+        };
+    });
+};
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
