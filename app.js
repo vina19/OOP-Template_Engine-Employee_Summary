@@ -62,6 +62,29 @@ const engineerPrompt = [
     },
 ];
 
+const internPrompt = [
+    {
+        type: 'input',
+        name: 'internName',
+        message: "Please enter the intern's name:",
+    },
+    {
+        type: 'input',
+        name: 'internId',
+        message: "Please enter the intern's id:",
+    },
+    {
+        type: 'input',
+        name: 'internEmail',
+        message: "Please enter the intern's email:",
+    },
+    {
+        type: 'input',
+        name: 'internSchool',
+        message: "Please enter the intern's school:",
+    },
+];
+
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
