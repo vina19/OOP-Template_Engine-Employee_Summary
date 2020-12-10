@@ -190,4 +190,5 @@ const getInternInfo = () => {
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
 
+
 main();
