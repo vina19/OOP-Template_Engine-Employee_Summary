@@ -10,6 +10,15 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+// Team array to hold the team list
+const teamArry = [];
+
+// Write code to use inquirer to gather information about the development team members,
+// and to create objects for each team member (using the correct classes as blueprints!)
+// After the user has input all employees desired, call the `render` function (required
+// above) and pass in an array containing all employee objects; the `render` function will
+// generate and return a block of HTML including templated divs for each employee!
+
 // Manager Prompt input
 const managerPrompt = [
     {
@@ -33,6 +42,60 @@ const managerPrompt = [
         message: 'What is your office number?',
     },
 ];
+
+// Main function which call manager prompt input and create a new manager with its data.
+// Then push all that data to the team array.
+const main = () => {
+
+    inquirer.prompt(managerPrompt).then((data) => {
+        
+        const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber)
+        
+        teamArry.push(manager);
+
+        // Ask the manager if he/she want to add members to the team.
+        addTeam();
+    });
+};
+
+// Add Engineer Team Prompt input
+const addTeamPrompt = [
+    {
+        type: 'list',
+        name: 'addMembers',
+        message: 'Would you like to add members in your Engineer Team? Please select member role for yes or select "Done" to show team members.',
+        choices: [
+            'Engineer',
+            'Intern',
+            'Done',
+        ],
+    },
+];
+
+// Add team member function where the manager would be displayed by prompt asking if
+// the manager would like to add members in the team with choices of team role (Engineer and Intern).
+const addTeam = () => {
+
+    inquirer.prompt(addTeamPrompt).then((data) => {
+        
+        // The condition if the manager choose Engineer as the new team member role then call the get engineer member info function,
+        // if the manager choose Intern as the new team member role then call the get intern info function,
+        // or else if the manager choose done then team.html page will be generated with all the employees summary.
+        switch(data.addMembers) {
+            case 'Engineer':
+                // Call the function to get engineer info goes here
+                break;
+            case 'Intern':
+                // Call the function to get intern info goes here
+                break;
+            case 'Done':
+                // Call the function to render the team members goes here
+                break;
+            default:
+                //default will be creating a html file;
+        };
+    });
+};
 
 // Engineer Prompt input
 const engineerPrompt = [
@@ -58,6 +121,7 @@ const engineerPrompt = [
     },
 ];
 
+
 // Intern Prompt input
 const internPrompt = [
     {
@@ -81,64 +145,6 @@ const internPrompt = [
         message: "Please enter the intern's school:",
     },
 ];
-
-// Add Engineer Team Prompt input
-const addTeamPrompt = [
-    {
-        type: 'list',
-        name: 'addMembers',
-        message: 'Would you like to add members in your Engineer Team? Please select member role for yes or select "Done" to show team members.',
-        choices: [
-            'Engineer',
-            'Intern',
-            'Done',
-        ],
-    },
-];
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// Team array to hold the team list
-const teamArry = [];
-
-// Main function which call manager prompt input and create a new manager with its data.
-// Then push all that data to the team array.
-function main() {
-
-    inquirer.prompt(managerPrompt).then((data) => {
-        
-        const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber)
-        
-        teamArry.push(manager);
-
-        // Ask the manager if he/she want to add members to the team.
-        addTeam();
-    });
-};
-
-function addTeam() {
-
-    inquirer.prompt(addTeamPrompt).then((data) => {
-        
-        switch(data.addMembers) {
-            case 'Engineer':
-                // Call the function to get engineer info goes here
-                break;
-            case 'Intern':
-                // Call the function to get intern info goes here
-                break;
-            case 'Done':
-                // Call the function to render the team members goes here
-                break;
-            default:
-                return "No team members added";
-        };
-    });
-};
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
