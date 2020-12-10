@@ -43,7 +43,8 @@ const managerPrompt = [
     },
 ];
 
-// Main function which call manager prompt input and create a new manager with its data.
+// Main function which use the manager prompt above to get the manager info
+// and create a new manager with its data.
 // Then push all that data to the team array.
 const main = () => {
 
@@ -72,7 +73,7 @@ const addTeamPrompt = [
     },
 ];
 
-// Add team member function where the manager would be displayed by prompt asking if
+// Add team member function where the manager would be displayed with a prompt asking if
 // the manager would like to add members in the team with choices of team role (Engineer and Intern).
 const addTeam = () => {
 
@@ -83,7 +84,7 @@ const addTeam = () => {
         // or else if the manager choose done then team.html page will be generated with all the employees summary.
         switch(data.addMembers) {
             case 'Engineer':
-                // Call the function to get engineer info goes here
+                getEngineerInfo();
                 break;
             case 'Intern':
                 // Call the function to get intern info goes here
@@ -121,6 +122,19 @@ const engineerPrompt = [
     },
 ];
 
+// Getting engineer info function which use the engineer prompt above to get engineer info
+// and then throw its data input to the new engineer class that then will be push to the team array.
+const getEngineerInfo = () => {
+
+    inquirer.prompt(engineerPrompt).then((data) => {
+
+        const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGitHub);
+
+        teamArry.push(engineer);
+
+        addTeam();
+    });
+};
 
 // Intern Prompt input
 const internPrompt = [
