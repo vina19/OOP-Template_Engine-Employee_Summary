@@ -16,10 +16,14 @@
     git@github.com:vina19/CSS_Bootstrap-Responsive_Portfolio.git
 
 #### 2. Access the folder with your favorite code editor.
-#### 3. In your terminal, run npm i or npm install.
+#### 3. In your terminal, run:
+    
+    npm i or npm install.
 
 ## Tests
-#### Run npm run test in your terminal.
+#### In your terminal, run:
+
+    npm run test
 
 ## Usage
 #### [Demo]()
