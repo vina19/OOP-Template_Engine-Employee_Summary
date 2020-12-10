@@ -90,10 +90,11 @@ const addTeam = () => {
                 getInternInfo();
                 break;
             case 'Done':
-                // Call the function to render the team members goes here
+                generateTeamSummary();
                 break;
             default:
-                //default will be creating a html file;
+                generateTeamSummary();
+                break;
         };
     });
 };
@@ -180,6 +181,18 @@ const getInternInfo = () => {
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
 
+// Writing a file name team.html which already set up in outputPath variable with the collection data of team summary
+// from the team array and throw error if failing in rendering the html file or console.log success if success in writing the file. 
+const generateTeamSummary = () => {
+
+    fs.writeFile(outputPath, render(teamArry), (err) =>
+        err ? console.log(err) : console.log('YOur html file with employee summary has been successfully generated!')
+    );
+};
+
+// Call the main function which will start the app
+main();
+
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
 // employee type.
@@ -189,6 +202,3 @@ const getInternInfo = () => {
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
-
-
-main();
