@@ -29,7 +29,6 @@
 #### [Demo](https://drive.google.com/file/d/1-X2n6kbegaU1Sde-sc_uB-GRQQT8dFsO/view)
 #### [YouTube Demo](https://youtu.be/8JKCHa-cObk)
 #### [Tests Passed Demo](https://drive.google.com/file/d/1_1CMQfoYkwIlFPIsSfgwSq60RL00VmBA/view)
-#### ![app_run_tests](https://user-images.githubusercontent.com/46719712/101822355-cebc3380-3aee-11eb-8351-53d41c752b3e.gif)
 
 ## Created using:
 ####  ![Javascript](https://img.shields.io/static/v1?label=JavaScript&message=ES6&color=blue) ![Node.js](https://img.shields.io/static/v1?label=Node.js&message=6.14.8&color=green) ![HTML](https://img.shields.io/static/v1?label=HTML&message=HTML5&color=orange)
