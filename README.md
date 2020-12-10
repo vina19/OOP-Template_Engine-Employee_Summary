@@ -18,7 +18,7 @@
 #### 2. Access the folder with your favorite code editor.
 #### 3. In your terminal, run:
     
-    npm i or npm install.
+    npm i or npm install
 
 ## Tests
 #### In your terminal, run:
