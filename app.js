@@ -87,7 +87,7 @@ const addTeam = () => {
                 getEngineerInfo();
                 break;
             case 'Intern':
-                // Call the function to get intern info goes here
+                getInternInfo();
                 break;
             case 'Done':
                 // Call the function to render the team members goes here
@@ -159,6 +159,20 @@ const internPrompt = [
         message: "Please enter the intern's school:",
     },
 ];
+
+// Getting intern info function which use the intern prompt above to get intern info
+// and then throw its data input to the new intern class that then will be push to the team array.
+const getInternInfo = () => {
+
+    inquirer.prompt(internPrompt).then((data) => {
+
+        const intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
+
+        teamArry.push(intern);
+
+        addTeam();
+    });
+};
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
