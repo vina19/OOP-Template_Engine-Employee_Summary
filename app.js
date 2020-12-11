@@ -5,6 +5,9 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+// npm library which validate the text input
+const validator = require('validator');
+
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
@@ -19,21 +22,63 @@ const managerPrompt = [
         type: 'input',
         name: 'managerName',
         message: 'What is your name?',
+        validate: function (input) {
+            if (input === "") {
+                return 'This field is required to be filled to add a member';
+            }
+            else {
+                return true;
+            }
+        },
     },
     {
-        type: 'number',
+        type: 'input',
         name: 'managerId',
         message: 'What is your number id?',
+        validate: function (input) {
+            if (typeof input === 'number') {
+                return true;
+            }
+            else if (input === "") {
+                return 'This field is required to be filled to add a member';
+            }
+            else {
+                return 'Please enter a valid number';
+            }
+        },
     },
     {
         type: 'input',
         name: 'managerEmail',
         message: 'What is your email?',
+        validate: function (input) {
+            if (validator.isEmail(input)) {
+                return true;
+            }
+            else if (input === "") {
+                return 'This field is required to be filled to add a member';
+            }
+            else {
+                return 'Please enter a valid email address';
+            }
+        }
+
     },
     {
         type: 'input',
         name: 'officeNumber',
         message: 'What is your office number?',
+        validate: function (input) {
+            if (typeof input !== 'number') {
+                return 'Please enter a valid number';
+            }
+            else if (input === "") {
+                return 'This field is required to be filled to add a member';
+            }
+            else {
+                return true;
+            }
+        },
     },
 ];
 
@@ -64,6 +109,14 @@ const addTeamPrompt = [
             'Intern',
             'Done',
         ],
+        validate: function (input) {
+            if (input === "") {
+                return 'This field is required to be selected based on the new member role to add a member';
+            }
+            else {
+                return true;
+            }
+        },
     },
 ];
 
@@ -99,21 +152,60 @@ const engineerPrompt = [
         type: 'input',
         name: 'engineerName',
         message: "Please enter the engineer's name:",
+        validate: function (input) {
+            if (input === "") {
+                return 'This field is required to be filled to add a member';
+            }
+            else {
+                return true;
+            }
+        },
     },
     {
         type: 'input',
         name: 'engineerId',
         message: "Please enter the engineer's id number:",
+        validate: function (input) {
+            if (typeof input !== 'number') {
+                return 'Please enter a valid number';
+            }
+            else if (input === "") {
+                return 'This field is required to be filled to add a member';
+            }
+            else {
+                return true;
+            }
+        },
     },
     {
         type: 'input',
         name: 'engineerEmail',
         message: "Please enter the engineer's email:",
+        validate: function (input){
+
+            if (validator.isEmail(input)) {
+                return true;
+            }
+            else if (input === "") {
+                return 'This field is required to be filled to add a member';
+            }
+            else {
+                return 'Please enter a valid email address';
+            }
+        },
     },
     {
         type: 'input',
         name: 'engineerGitHub',
         message: "Please enter the engineer's GitHub username:",
+        validate: function (input) {
+            if (input === "") {
+                return 'This field is required to be filled to add a member';
+            }
+            else {
+                return true;
+            }
+        },
     },
 ];
 
@@ -137,21 +229,60 @@ const internPrompt = [
         type: 'input',
         name: 'internName',
         message: "Please enter the intern's name:",
+        validate: function (input) {
+            if (input === "") {
+                return 'This field is required to be filled to add a member';
+            }
+            else {
+                return true;
+            }
+        },
     },
     {
         type: 'input',
         name: 'internId',
         message: "Please enter the intern's id:",
+        validate: function (input) {
+            if (typeof input !== 'number') {
+                return 'Please enter a valid number';
+            }
+            else if (input === "") {
+                return 'This field is required to be filled to add a member';
+            }
+            else {
+                return true;
+            }
+        },
     },
     {
         type: 'input',
         name: 'internEmail',
         message: "Please enter the intern's email:",
+        validate: function (input){
+
+            if (validator.isEmail(input)) {
+                return true;
+            }
+            else if (input === "") {
+                return 'This field is required to be filled to add a member';
+            }
+            else {
+                return 'Please enter a valid email address';
+            }
+        },
     },
     {
         type: 'input',
         name: 'internSchool',
         message: "Please enter the intern's school:",
+        validate: function (input) {
+            if (input === "") {
+                return 'This field is required to be filled to add a member';
+            }
+            else {
+                return true;
+            }
+        },
     },
 ];
 
@@ -174,7 +305,7 @@ const getInternInfo = () => {
 const generateTeamSummary = () => {
 
     fs.writeFile(outputPath, render(teamArry), (err) =>
-        err ? console.log(err) : console.log('YOur html file with employee summary has been successfully generated!')
+        err ? console.log(err) : console.log('Your html file with employee summary has been successfully generated!')
     );
 };
 
