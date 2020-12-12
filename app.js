@@ -36,14 +36,14 @@ const managerPrompt = [
         name: 'managerId',
         message: 'What is your number id?',
         validate: function (input) {
-            if (typeof input === 'number') {
+            if (!isNaN(parseFloat(input))) {
                 return true;
             }
             else if (input === "") {
                 return 'This field is required to be filled to add a member';
             }
             else {
-                return 'Please enter a valid number';
+                return 'Please enter a valid number.';
             }
         },
     },
@@ -69,14 +69,14 @@ const managerPrompt = [
         name: 'officeNumber',
         message: 'What is your office number?',
         validate: function (input) {
-            if (typeof input !== 'number') {
-                return 'Please enter a valid number';
+            if (!isNaN(parseFloat(input))) {
+                return true;
             }
             else if (input === "") {
                 return 'This field is required to be filled to add a member';
             }
             else {
-                return true;
+                return 'Please enter a valid number.';
             }
         },
     },
@@ -166,14 +166,14 @@ const engineerPrompt = [
         name: 'engineerId',
         message: "Please enter the engineer's id number:",
         validate: function (input) {
-            if (typeof input !== 'number') {
-                return 'Please enter a valid number';
+            if (!isNaN(parseFloat(input))) {
+                return true;
             }
             else if (input === "") {
                 return 'This field is required to be filled to add a member';
             }
             else {
-                return true;
+                return 'Please enter a valid number.';
             }
         },
     },
@@ -182,7 +182,6 @@ const engineerPrompt = [
         name: 'engineerEmail',
         message: "Please enter the engineer's email:",
         validate: function (input){
-
             if (validator.isEmail(input)) {
                 return true;
             }
@@ -243,14 +242,14 @@ const internPrompt = [
         name: 'internId',
         message: "Please enter the intern's id:",
         validate: function (input) {
-            if (typeof input !== 'number') {
-                return 'Please enter a valid number';
+            if (!isNaN(parseFloat(input))) {
+                return true;
             }
             else if (input === "") {
                 return 'This field is required to be filled to add a member';
             }
             else {
-                return true;
+                return 'Please enter a valid number.';
             }
         },
     },
@@ -259,7 +258,6 @@ const internPrompt = [
         name: 'internEmail',
         message: "Please enter the intern's email:",
         validate: function (input){
-
             if (validator.isEmail(input)) {
                 return true;
             }
